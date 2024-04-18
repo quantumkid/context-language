@@ -1,0 +1,25 @@
+{
+  "name": "context-language",
+  "displayName": "context-language",
+  "description": "Language support for ConTeXt.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "context",
+      "aliases": ["Context", "context"],
+      "extensions": [".tex"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "context",
+      "scopeName": "source.context",
+      "path": "./syntaxes/context.tmLanguage.json"
+    }]
+  }
+}
