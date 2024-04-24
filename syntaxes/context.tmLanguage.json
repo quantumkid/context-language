@@ -57,32 +57,34 @@
 			"begin": "\\[",
 			"end": "\\]",
 			"patterns": [{
-				"match": "([a-zA-Z0-9_@!?\\\\-]+)\\s*(=)\\s*([a-zA-Z0-9_@!?\\.\\\\-]+)",
-				"captures": {
-					"1": {
-						"name": "variable.parameter.key.context"
-					},
-					"2": {
-						"name": "keyword.operator.assignment.context"
-					},
-					"3": {
-						"patterns": [
-						{
-							"include": "$self"
-						}]
+					"match": "([a-zA-Z0-9_@!?\\\\-]+)\\s*(=)\\s*([a-zA-Z0-9_@!?\\.\\\\-]+)",
+					"captures": {
+						"1": {
+							"name": "variable.parameter.key.context"
+						},
+						"2": {
+							"name": "keyword.operator.assignment.context"
+						},
+						"3": {
+							"patterns": [
+								{
+									"include": "$self"
+								}
+							]
+						}
 					}
+				},
+				{
+					"include": "#option"
+				},
+				{
+					"include": "#comments"
 				}
-			},
-			{
-				"include": "#option"
-			},
-			{
-				"include": "#comments"
-			}]
+			]
 		},
 		"option": {
-				"match": "([a-zA-Z0-9_@!?-]+)",
-				"name": "variable.parameter.option.context"
+			"match": "([a-zA-Z0-9_@!?-]+)",
+			"name": "variable.parameter.option.context"
 		}
 	},
 	"scopeName": "source.context"
