@@ -12,7 +12,7 @@
   "contributes": {
     "languages": [{
       "id": "context",
-      "aliases": ["Context", "context"],
+      "aliases": ["ConTeXt", "context"],
       "extensions": [".tex"],
       "configuration": "./language-configuration.json"
     }],
