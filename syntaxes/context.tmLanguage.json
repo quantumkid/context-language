@@ -3,29 +3,64 @@
 	"name": "Context",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#comments"
 		},
 		{
-			"include": "#strings"
+			"include": "#spaces"
+		},
+		{
+			"include": "#csnames"
+		},
+		{
+			"include": "#options"
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.context",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.context",
-			"begin": "\"",
-			"end": "\"",
+		"comments": {
+			"name": "comment.line.context",
+			"begin": "(?>\\s*)(%)",
+			"beginCaptures": {
+				"1": {
+					"name": "comment.line.percentage.context"
+				}
+			},
+			"end": "$\\n?",
 			"patterns": [
 				{
-					"name": "constant.character.escape.context",
-					"match": "\\\\."
+					"match": "\\b.*\\b"
 				}
 			]
+		},
+		"spaces": {
+			"name": "entity.name.function.csname.space.context",
+			"match": "\\\\ "
+		},
+		"csnames": {
+			"name": "entity.name.function.csname.context",
+			"match": "\\\\[a-zA-Z0-9_@!?-]+"
+		},
+		"options": {
+			"begin": "\\[",
+			"end": "\\]",
+			"patterns": [{
+				"match": "([a-zA-Z0-9_@!?-]+)\\s*(=)\\s*([a-zA-Z0-9_@!?-]+)",
+				"captures": {
+					"1": {
+						"name": "variable.parameter.key.context"
+					},
+					"2": {
+						"name": "keyword.operator.assignment.context"
+					}
+				}
+			},
+			{
+				"match": "([a-zA-Z0-9_@!?-]+)",
+				"captures": {
+					"1": {
+						"name": "variable.parameter"
+					}
+				}
+			}]
 		}
 	},
 	"scopeName": "source.context"
