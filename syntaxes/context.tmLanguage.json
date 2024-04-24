@@ -6,6 +6,12 @@
 			"include": "#comments"
 		},
 		{
+			"include": "#numerics"
+		},
+		{
+			"include": "#characters"
+		},
+		{
 			"include": "#spaces"
 		},
 		{
@@ -18,7 +24,7 @@
 	"repository": {
 		"comments": {
 			"name": "comment.line.context",
-			"begin": "(?>\\s*)(%)",
+			"begin": "(?>\\s*)(%+)",
 			"beginCaptures": {
 				"1": {
 					"name": "comment.line.percentage.context"
@@ -30,6 +36,14 @@
 					"match": "\\b.*\\b"
 				}
 			]
+		},
+		"numerics": {
+			"name": "constant.numeric",
+			"match": "\\.?[0-9]+"
+		},
+		"characters": {
+			"name": "constant.character",
+			"match": "\\\\&|\\\\%|\\\\\\$|\\\\#|\\\\_|\\\\{|\\\\}|\\\\~|\\\\\\^|\\\\\\\\"
 		},
 		"spaces": {
 			"name": "entity.name.function.csname.space.context",
@@ -43,24 +57,32 @@
 			"begin": "\\[",
 			"end": "\\]",
 			"patterns": [{
-				"match": "([a-zA-Z0-9_@!?-]+)\\s*(=)\\s*([a-zA-Z0-9_@!?-]+)",
+				"match": "([a-zA-Z0-9_@!?\\\\-]+)\\s*(=)\\s*([a-zA-Z0-9_@!?\\.\\\\-]+)",
 				"captures": {
 					"1": {
 						"name": "variable.parameter.key.context"
 					},
 					"2": {
 						"name": "keyword.operator.assignment.context"
+					},
+					"3": {
+						"patterns": [
+						{
+							"include": "$self"
+						}]
 					}
 				}
 			},
 			{
-				"match": "([a-zA-Z0-9_@!?-]+)",
-				"captures": {
-					"1": {
-						"name": "variable.parameter"
-					}
-				}
+				"include": "#option"
+			},
+			{
+				"include": "#comments"
 			}]
+		},
+		"option": {
+				"match": "([a-zA-Z0-9_@!?-]+)",
+				"name": "variable.parameter.option.context"
 		}
 	},
 	"scopeName": "source.context"
