@@ -38,11 +38,11 @@
 			]
 		},
 		"numerics": {
-			"name": "constant.numeric",
+			"name": "constant.numeric.context",
 			"match": "\\.?[0-9]+"
 		},
 		"characters": {
-			"name": "constant.character",
+			"name": "constant.character.escape.context",
 			"match": "\\\\&|\\\\%|\\\\\\$|\\\\#|\\\\_|\\\\{|\\\\}|\\\\~|\\\\\\^|\\\\\\\\"
 		},
 		"spaces": {
