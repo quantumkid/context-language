@@ -30,12 +30,7 @@
 					"name": "comment.line.percentage.context"
 				}
 			},
-			"end": "$\\n?",
-			"patterns": [
-				{
-					"match": "\\b.*\\b"
-				}
-			]
+			"end": "$\\n?"
 		},
 		"numerics": {
 			"name": "constant.numeric.context",
@@ -57,7 +52,7 @@
 			"begin": "\\[",
 			"end": "\\]",
 			"patterns": [{
-					"match": "([a-zA-Z0-9_@!?\\\\-]+)\\s*(=)\\s*([a-zA-Z0-9_@!?\\.\\\\-]+)",
+					"match": "([a-zA-Z0-9_@!?\\\\-]+)\\s*(=)\\s*([a-zA-Z0-9_@!? \\.\\\\-]+)",
 					"captures": {
 						"1": {
 							"name": "variable.parameter.key.context"
